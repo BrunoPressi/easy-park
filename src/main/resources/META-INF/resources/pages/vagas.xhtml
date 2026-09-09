@@ -34,11 +34,27 @@
 
             <div>
                 <p:commandButton type="button" action="#{vagaBean.processarVaga}" value="Cadastrar Vaga" >
-                    <f:ajax execute="@form" render="@form"/>
+                    <f:ajax execute="@form" render="@form listaVagas"/>
                 </p:commandButton>
             </div>
 
         </h:form>
+
+        <p:dataTable id="listaVagas" var="vaga" value="#{vagaBean.vagasList}" rowKey="#{vaga.id}"
+                     paginator="true" rows="5" paginatorPosition="bottom">
+            <p:column headerText="Id">
+                <h:outputText value="#{vaga.id}" />
+            </p:column>
+
+            <p:column headerText="Nome" sortBy="#{vaga.nome}">
+                <h:outputText value="#{vaga.nome}" />
+            </p:column>
+
+            <p:column headerText="Status" sortBy="#{vaga.status}">
+                <h:outputText value="#{vaga.status}" />
+            </p:column>
+
+        </p:dataTable>
 
     </ui:define>
 
