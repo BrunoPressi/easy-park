@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+    </f:facet>
+    <title><ui:insert name="title">EasyPark</ui:insert></title>
+    <h:outputStylesheet name="css/style.css" />
+    <ui:insert name="head"/>
+    <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css"/>
+</h:head>
+
+<h:body>
+    <p:growl id="messages"
+             showDetail="true"
+             showSummary="true"
+             globalOnly="true">
+        <p:autoUpdate/>
+    </p:growl>
+
+    <div class="layout-wrapper">
+        <div class="layout-topbar" style="margin-bottom: 20px;">
+            <h:form id="menuForm">
+                <p:menubar>
+                    <p:menuitem value="Dashboard" icon="pi pi-home" url="/pages/dashboard/index.xhtml" />
+                    <p:submenu label="Cadastros" icon="pi pi-plus">
+                        <p:menuitem value="Vagas" icon="pi pi-book" url="/pages/vagas.xhtml" />
+                    </p:submenu>
+                    <f:facet name="options">
+                        <p:commandButton value="Sair" icon="pi pi-sign-out" styleClass="ui-button-danger" action="/logout.xhtml?faces-redirect=true" />
+                    </f:facet>
+                </p:menubar>
+            </h:form>
+        </div>
+
+        <div class="layout-content">
+            <p:panel header="#{viewTitle}">
+                <ui:insert name="content">
+                    <!-- Conteúdo das páginas será inserido aqui -->
+                </ui:insert>
+            </p:panel>
+        </div>
+
+        <div class="layout-footer" style="margin-top: 20px; text-align: center; font-size: 0.9em; color: #666;">
+            <hr />
+            <p>&#169; 2026 - Bruno Pressi - Trabalho Final ADS - EasyPark</p>
+        </div>
+    </div>
+</h:body>
+</html>

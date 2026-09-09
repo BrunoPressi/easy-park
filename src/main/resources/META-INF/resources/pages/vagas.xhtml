@@ -1,0 +1,45 @@
+<ui:composition template="/templates/layout.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:f="jakarta.faces.core"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+        <style>
+            button.ui-button {
+                margin-top: .5rem;
+            }
+            .inputs {
+                margin-bottom: .5rem;
+            }
+        </style>
+
+
+        <h:form id="formVaga">
+            <div class="inputs">
+                <div class="inputs">
+                    <p:outputLabel for="nomeVaga" value="Nome da Vaga" styleClass="col-12 mb-2 md:col-2 md:mb-0"/>
+                </div>
+                <div>
+                    <div class="col-12 md:col-10">
+                        <p:inputText id="nomeVaga" value="#{vagaBean.vagaCreateDTO.nome}" placeholder="Ex: V01"/>
+                        <div>
+                            <h:message for="nomeVaga" style="color:red;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <p:commandButton type="button" action="#{vagaBean.processarVaga}" value="Cadastrar Vaga" >
+                    <f:ajax execute="@form" render="@form"/>
+                </p:commandButton>
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
